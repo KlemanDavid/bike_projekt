@@ -14,12 +14,12 @@ return new class extends Migration
     if (!Schema::hasTable('bike_tours')) {
         Schema::create('bike_tours', function (Blueprint $table) {
             $table->id();
-            $table->string('tour_country');  // Túra helye (megye vagy régió)
-            $table->integer('tour_time');      // Túra időtartama órában
-            $table->string('difficulty');      // Nehézségi szint
-            $table->string('bike_type');       // Bicikli típusa
-            $table->string('route_name');      // Pálya neve
-            $table->integer('calories');       // Elégetett energia (kcal)
+            $table->string('tour_country'); 
+            $table->integer('tour_time');      
+            $table->string('difficulty');      
+            $table->string('bike_type');       
+            $table->string('route_name');     
+            $table->integer('calories');       
             $table->timestamps();
         });
     }
