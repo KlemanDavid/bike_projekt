@@ -1,0 +1,42 @@
+
+<div class="tour-detail-wrapper" *ngIf="tour; else noTour" 
+     [ngStyle]="{'background-image': 'url(' + tour.backgr_pic + ')'}">
+
+  
+  <header class="tour-detail-header">
+    <div class="logo">BikeApp</div>
+    
+  </header>
+
+  <div class="user-info">
+    Bejelentkezve: <strong>{{ currentUsername }}</strong>
+  </div>
+
+  <div class="tour-detail-container">
+    
+    <h1 class="tour-title">{{ tour.route_name }}</h1>
+    
+    
+    <div class="tour-content">
+      <div class="tour-description-wrapper">
+        <h2 class="section-title">Túra leírás</h2>
+        <div class="tour-description">
+          <p>{{ tour.tour_description }}</p>
+        </div>
+      </div>
+      <div class="tour-bike-wrapper">
+        <h2 class="section-title">Ajánlott bicikli típus</h2>
+        <div class="tour-bike">
+          <img [src]="tour.bike_pic" alt="Recommended Bike">
+        </div>
+      </div>
+    </div>
+    
+    <button (click)="goBack()">Vissza a túraválasztás oldalra</button>
+  </div>
+</div>
+
+<ng-template #noTour>
+  <p>Nincs kiválasztott túra!</p>
+  <button (click)="goBack()">Vissza</button>
+</ng-template>

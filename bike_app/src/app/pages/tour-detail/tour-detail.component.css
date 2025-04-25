@@ -1,0 +1,183 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; 
+  box-sizing: border-box;
+}
+
+/* -----------------------
+   Háttér + egybefutó konténer
+   ----------------------- */
+.tour-detail-wrapper {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* -----------------------
+   Fixed header + user‑info
+   ----------------------- */
+.tour-detail-header {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #007bff;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+.user-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.8);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  z-index: 10;
+  color: #000;
+}
+
+/* -----------------------
+   Középső doboz szélesség kezelése
+   ----------------------- */
+.tour-detail-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px; 
+  margin: 20px auto;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 5;
+}
+
+/* -----------------------
+   Cím méretezése
+   ----------------------- */
+.tour-title {
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+/* -----------------------
+   Rugalmas kétoszlopos tartalom
+   ----------------------- */
+.tour-content {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;       
+}
+
+
+.tour-description-wrapper,
+.tour-bike-wrapper {
+  flex: 1 1 280px;       
+  box-sizing: border-box;
+}
+
+/* -----------------------
+   Leírás és kép dobozok
+   ----------------------- */
+.tour-description,
+.tour-bike {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Leírás görgetése ha túl magas */
+.tour-description {
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+/* Kép méretezése */
+.tour-bike img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* -----------------------
+   Műveleti gombok
+   ----------------------- */
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  margin-top: 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+/* -----------------------
+   Mobil töréspont (≤600px)
+   ----------------------- */
+@media (max-width: 600px) {
+
+  .tour-detail-container {
+    padding: 15px;
+    width: 95%;
+    max-width: none;
+  }
+
+
+  .tour-detail-header {
+    font-size: 1.5em;
+  }
+  
+  
+  .user-info {
+    font-size: 0.8em;
+    padding: 2px 6px;
+  }
+
+  
+  .tour-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  
+  .tour-description-wrapper,
+  .tour-bike-wrapper {
+    flex: 1 1 100%;
+  }
+
+  
+  button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

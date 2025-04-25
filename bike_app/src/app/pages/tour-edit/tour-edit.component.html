@@ -1,0 +1,93 @@
+<div class="tour-edit-page"
+     *ngIf="tour"
+     [ngStyle]="{ 'background-image': 'url(' + tour.backgr_pic + ')' }">
+
+  <!-- Fixed header -->
+  <div class="tour-edit-title">BikeApp</div>
+
+  <!-- Háttérkép URL szerkesztő -->
+  <div class="background-url">
+    <label for="backgr_pic">Háttérkép URL:</label>
+    <input id="backgr_pic"
+           type="text"
+           [(ngModel)]="tour.backgr_pic"
+           name="backgr_pic"
+           placeholder="Kép URL">
+  </div>
+
+  <!-- Fehér panel a szerkesztőformnak -->
+  <div class="tour-edit-container">
+    <form #tourForm="ngForm" (ngSubmit)="updateTour()">
+
+      <!-- Túra neve -->
+      <h1 class="tour-title">
+        <input type="text"
+               [(ngModel)]="tour.route_name"
+               name="route_name"
+               placeholder="Túra neve">
+      </h1>
+
+      <!-- Idő, nehézség, bicikli típus -->
+      <div class="edit-info">
+        <div class="field">
+          <label for="tour_time">Túra ideje (óra):</label>
+          <input id="tour_time"
+                 type="number"
+                 [(ngModel)]="tour.tour_time"
+                 name="tour_time"
+                 placeholder="pl. 4">
+        </div>
+        <div class="field">
+          <label for="difficulty">Nehézség:</label>
+          <input id="difficulty"
+                 type="text"
+                 [(ngModel)]="tour.difficulty"
+                 name="difficulty"
+                 placeholder="pl. Könnyű, Közepes">
+        </div>
+        <div class="field">
+          <label for="bike_type">Bicikli típusa:</label>
+          <input id="bike_type"
+                 type="text"
+                 [(ngModel)]="tour.bike_type"
+                 name="bike_type"
+                 placeholder="pl. Országúti">
+        </div>
+      </div>
+
+      <!-- Leírás és ajánlott bicikli kép -->
+      <div class="tour-content">
+        <div class="tour-description-wrapper">
+          <h2 class="section-title">Túra leírás</h2>
+          <div class="tour-description">
+            <textarea
+              [(ngModel)]="tour.tour_description"
+              name="tour_description"
+              rows="6"
+              placeholder="Írd ide a túra leírását..."></textarea>
+          </div>
+        </div>
+
+        <div class="tour-bike-wrapper">
+          <h2 class="section-title">Ajánlott bicikli típus</h2>
+          <div class="tour-bike">
+            <input type="text"
+                   [(ngModel)]="tour.bike_pic"
+                   name="bike_pic"
+                   placeholder="Bicikli kép URL">
+            <img *ngIf="tour.bike_pic"
+                 [src]="tour.bike_pic"
+                 alt="Recommended Bike">
+          </div>
+        </div>
+      </div>
+
+      <!-- Mentés / Mégsem gombok -->
+      <div class="actions">
+        <button type="submit">Mentés</button>
+        <button type="button" (click)="cancel()">Mégsem</button>
+      </div>
+
+    </form>
+  </div>
+</div>

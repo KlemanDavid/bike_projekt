@@ -1,0 +1,160 @@
+<div class="admin-container">
+
+  <header class="admin-header">
+    BikeApp
+  </header>
+  <!-- Túra hozzáadása form -->
+  <div class="admin-form">
+    <h2>Túra hozzáadása</h2>
+    
+    <label for="tourLocation">Megye</label>
+    <input id="tourLocation" type="text" [(ngModel)]="newTour.tour_country">
+    
+    <label for="tourTime">Túra ideje</label>
+    <input id="tourTime" type="text" [(ngModel)]="newTour.tour_time">
+    
+    <label for="difficulty">Nehézség</label>
+    <select id="difficulty" [(ngModel)]="newTour.difficulty">
+      <option value="Könnyű">Könnyű</option>
+      <option value="Közepes">Közepes</option>
+      <option value="Nehéz">Nehéz</option>
+    </select>
+    
+    <label for="bikeType">Bicikli fajtája</label>
+    <select id="bikeType" [(ngModel)]="newTour.bike_type">
+      <option value="Gravel">Gravel</option>
+      <option value="Országúti">Országúti</option>
+      <option value="Mountainbike">Mountainbike</option>
+    </select>
+    
+    <label for="routeName">Útvonal neve</label>
+    <input id="routeName" type="text" [(ngModel)]="newTour.route_name">
+    
+    <label for="description">Túra leírása</label>
+    <textarea id="description" rows="4" [(ngModel)]="newTour.tour_description"></textarea>
+    
+    <label for="bikePic">Bicikli kép URL</label>
+    <input id="bikePic" type="text" [(ngModel)]="newTour.bike_pic">
+    
+    <label for="backgrPic">Háttérkép URL</label>
+    <input id="backgrPic" type="text" [(ngModel)]="newTour.backgr_pic">
+    
+    <button (click)="addTour()">Hozzáadás</button>
+  </div>
+  
+  <!-- Túrák listája -->
+  <div class="admin-list">
+    <h2>Túrák listája</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Túra neve</th>
+          <th>Túra ideje</th>
+          <th>Nehézség</th>
+          <th>Bicikli típusa</th>
+          <th>Megye</th>
+          <th>Leírás</th>
+          <th>Bicikli kép</th>
+          <th>Háttérkép</th>
+          <th>Műveletek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tour of tours">
+          <td>{{ tour.route_name }}</td>
+          <td>{{ tour.tour_time }}</td>
+          <td>{{ tour.difficulty }}</td>
+          <td>{{ tour.bike_type }}</td>
+          <td>{{ tour.tour_country }}</td>
+          <td>
+            <div class="tour-description-cell">
+              {{ tour.tour_description }}
+            </div>
+          </td>
+          <td>
+            <img [src]="tour.bike_pic" alt="Bicikli kép" width="50">
+          </td>
+          <td>
+            <img [src]="tour.backgr_pic" alt="Háttérkép" width="50">
+          </td>
+          <td>
+            <button class="delete-btn" (click)="deleteTour(tour)">Törlés</button>
+            <button class="edit-btn" (click)="editTour(tour)">Szerkesztés</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Felhasználók listája -->
+  <div class="admin-users">
+    <h2>Regisztrált Felhasználók listája</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Név</th>
+          <th>Felhasználónév</th>
+          <th>Email</th>
+          <th>Születési dátum</th>
+          <th>Műveletek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.birthdate }}</td>
+          <td>
+            <button (click)="deleteUser(user)">Törlés</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h2>Beküldött túrajavaslatok</h2>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Felhasználó</th>
+      <th>Megye</th>
+      <th>Útvonal neve</th>
+      <th>Nehézség</th>
+      <th>Bicikli típus</th>
+      <th>Időtartam</th>
+      <th>Túra leírása</th>
+      <th>Beküldve</th>
+      <th>Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of suggestions; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ s.user?.username || s.user?.name }}</td>
+      <td>{{ s.tour_country }}</td>
+      <td>{{ s.route_name }}</td>
+      <td>{{ difficultyLabels[s.difficulty] || s.difficulty }}</td>
+      <td>{{ s.bike_type }}</td>
+      <td>{{ s.tour_time }}</td>
+      <!-- ide jön a módosított cella -->
+      <td>
+        <div class="tour-description-cell">
+          {{ s.tour_description }}
+        </div>
+      </td>
+      <td>{{ s.created_at | date:'yyyy-MM-dd' }}</td>
+      <td>
+        <button class="delete-btn" (click)="deleteSuggestion(s)">Törlés</button>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="admin-footer"></div>
+  <button (click)="goToLogin()">Vissza a bejelentkező oldalra</button>
+</div>

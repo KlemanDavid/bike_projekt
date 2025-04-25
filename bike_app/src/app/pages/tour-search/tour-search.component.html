@@ -1,0 +1,61 @@
+
+<div class="tour-search-container">
+  <header class="tour-search-header">
+    BikeApp
+  </header>
+
+  <div class="user-info">
+    Bejelentkezve: <strong>{{ currentUsername }}</strong>
+  </div>
+ 
+
+  <div class="search-window">
+    <h2>Túraválasztás</h2>
+    <div class="tour-filters">
+      <!-- Megye dropdown -->
+      <div class="dropdown">
+        <label>Megye</label>
+        <select [(ngModel)]="selectedLocation" (ngModelChange)="onCountyChange()">
+          <option value="">Válassz...</option>
+          <option *ngFor="let loc of tourLocations" [value]="loc">{{ loc }}</option>
+        </select>
+      </div>
+      
+      <!-- Nehézség dropdown (csak a kiválasztott megyéhez tartozó nehézség szintek) -->
+      <div class="dropdown">
+        <label>Nehézség</label>
+        <select [(ngModel)]="selectedDifficulty" (ngModelChange)="onDifficultyChange()">
+          <option value="">Válassz...</option>
+          <option *ngFor="let diff of difficultyLevels" [value]="diff">{{ diff }}</option>
+        </select>
+      </div>
+      
+      <!-- Bicikli típus dropdown (csak a kiválasztott megyéhez és nehézséghez tartozó értékek) -->
+      <div class="dropdown">
+        <label>Bicikli típusa</label>
+        <select [(ngModel)]="selectedBikeType" (ngModelChange)="onBikeTypeChange()">
+          <option value="">Válassz...</option>
+          <option *ngFor="let bike of bikeTypes" [value]="bike">{{ bike }}</option>
+        </select>
+      </div>
+      
+      <!-- Túra ideje dropdown (a fenti szűrők alapján) -->
+      <div class="dropdown">
+        <label>Túra ideje (óra)</label>
+        <select [(ngModel)]="selectedTime">
+          <option value="">Válassz...</option>
+          <option *ngFor="let time of tourTimes" [value]="time">{{ time }}</option>
+        </select>
+      </div>
+      
+      <!-- Gomb a túra kiválasztásához -->
+      <button (click)="selectTour()">Túra kiválasztása</button>
+
+      <button (click)="goBack()">Vissza a bejelentkező oldalra</button>
+
+      <button (click)="goToSuggestion()">Új túra javaslat</button>
+        </div>  
+      
+    </div>
+
+    

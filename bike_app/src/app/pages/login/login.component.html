@@ -1,0 +1,53 @@
+<div class="login-background">
+  <header class="login-header">
+    <h1>BikeApp</h1>
+  </header>
+
+  <div class="login-container">
+    <h2>Bejelentkezés</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <div class="form-group">
+        <label>Felhasználónév vagy E-mail</label>
+        <input
+          type="text"
+          name="login"
+          [(ngModel)]="credentials.login"
+          required
+          placeholder="Email vagy felhasználónév"
+        />
+      </div>
+
+      <!-- Jelszó mező show/hide gombbal -->
+      <div class="form-group password-group">
+        <label>Jelszó</label>
+        <div class="input-with-btn">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            name="password"
+            [(ngModel)]="credentials.password"
+            required
+            placeholder="Jelszó"
+          />
+          <button
+            type="button"
+            class="btn-toggle"
+            (click)="togglePasswordVisibility()"
+            aria-label="Mutasd vagy rejtsd a jelszót"
+          >
+            {{ showPassword ? 'Elrejt' : 'Mutasd' }}
+          </button>
+        </div>
+      </div>
+
+      <button type="submit">Bejelentkezés</button>
+    </form>
+
+    <button type="button" (click)="goToRegister()" class="register-btn">
+      Regisztráció
+    </button>
+  </div>
+
+  <footer class="login-footer">
+    <p>Készítette: Klemán Dávid és Pesztránszki Dániel</p>
+  </footer>
+</div>

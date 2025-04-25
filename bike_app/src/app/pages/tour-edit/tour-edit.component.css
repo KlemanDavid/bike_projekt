@@ -1,0 +1,298 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ----------------------------------------
+   Háttér + középre igazítás
+   ---------------------------------------- */
+.tour-edit-page {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative;
+}
+
+/* ----------------------------------------
+   Fix header
+   ---------------------------------------- */
+.tour-edit-title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #007bff;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+
+/* ----------------------------------------
+   Background URL mező (felül jobbra)
+   ---------------------------------------- */
+.background-url {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.9);
+  padding: 6px 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  font-size: 0.85em;
+  z-index: 11;
+  @media (max-width: 768px) {
+    .background-url {
+      right: 10px;
+    }
+
+  }
+
+    @media (max-width: 480px) {
+      .background-url {
+        position: static;
+        margin: 0 auto 12px;
+        transform: none;
+        width: 90%;
+        max-width: 300px;
+      }
+    }
+}
+.background-url label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+.background-url input {
+  width: 140px;
+  padding: 6px;
+  font-size: 0.85em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* ----------------------------------------
+   Fehér panel a szerkesztőformnak
+   ---------------------------------------- */
+.tour-edit-container {
+  background: rgba(255,255,255,0.9);
+  width: 100%;
+  max-width: 600px;
+  margin: 80px auto 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* ----------------------------------------
+   Űrlap – egyoszlopos grid
+   ---------------------------------------- */
+.tour-edit-container form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 16px;
+}
+
+/* ----------------------------------------
+   Túra neve
+   ---------------------------------------- */
+.tour-title {
+  margin: 0;
+  font-size: 2em;
+}
+.tour-title input {
+  width: 100%;
+  padding: 4px 0;
+  font-size: 2em;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: #333;
+}
+
+/* ----------------------------------------
+   Info mezők (idő, nehézség, bicikli típusa)
+   ---------------------------------------- */
+.edit-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.edit-info .field {
+  flex: 1 1 auto;
+  max-width: 140px;
+  display: flex;
+  flex-direction: column;
+}
+.field label {
+  margin-bottom: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.field input {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ----------------------------------------
+   Leírás és bicikli kép – egymás alatt
+   ---------------------------------------- */
+.tour-edit-container .tour-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.tour-edit-container .tour-description-wrapper,
+.tour-edit-container .tour-bike-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.section-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.tour-description textarea {
+  width: 100%;
+  height: 200px;
+  padding: 8px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.tour-bike input {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.tour-bike img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* ----------------------------------------
+   Műveleti gombok
+   ---------------------------------------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.actions button {
+  flex: 1 1 auto;
+  max-width: 120px; 
+  width: 100%;
+  padding: 10px 0;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.actions button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .actions button {
+    flex: 1 1 100%;
+    max-width: none;
+    padding: 12px 0;
+  }
+}
+
+/* ----------------------------------------
+   Tablet (≤768px)
+   ---------------------------------------- */
+@media (max-width: 768px) {
+  .tour-edit-container {
+    max-width: 95%;
+    padding: 16px;
+    margin-top: 60px;
+  }
+  .edit-info .field {
+    flex: 1 1 100%;
+  }
+  .tour-description-wrapper,
+  .tour-bike-wrapper {
+    width: 100%;
+  }
+  .tour-description textarea {
+    height: 150px;
+  }
+  .actions button {
+    flex: 1 1 100px;
+  }
+}
+
+/* ----------------------------------------
+   Mobil (≤480px)
+   ---------------------------------------- */
+@media (max-width: 480px) {
+  .tour-edit-title {
+    font-size: 1.5em;
+  }
+  .background-url input {
+    width: 100px;
+  }
+  .tour-edit-container {
+    padding: 12px;
+  }
+  .tour-title input {
+    font-size: 1.6em;
+  }
+  .field label,
+  .field input,
+  .background-url {
+    font-size: 0.8em;
+    padding: 4px 6px;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .actions button {
+    flex: 1 1 100%;
+    font-size: 0.9em;
+  }
+}
+
+
+
+
+
+
+
