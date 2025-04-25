@@ -1,0 +1,34 @@
+bike_app (Frontend)
+
+beüzemelés:
+
+	- npm install
+
+indítás:
+	- ng serve -o
+
+bike_backend
+
+Beüzemelés:
+	- composer install
+	- .env fájl létrehozása
+	- php artisan key:generate
+	- composer require league/csv
+	- php artisan migrate
+ 	- php artisan db:seed
+
+.env módosítása:
+
+	DB_CONNECTION=sqlite
+
+	MAIL_MAILER=smtp
+	MAIL_HOST=smtp.gmail.com
+	MAIL_PORT=587
+	MAIL_USERNAME= saját email
+	MAIL_PASSWORD= saját alkalmazás jelszó
+	MAIL_ENCRYPTION=tls
+	MAIL_FROM_ADDRESS="saját email"
+	MAIL_FROM_NAME="BikeApp"
+
+indítás:
+	- php artisan serve
